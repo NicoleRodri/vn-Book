@@ -1,0 +1,54 @@
+@@ -0,0 +1,53 @@
+-- ------------------------------------------------ --------
+-- Anfitrión: 127.0.0.1
+-- Versión del servidor: 5.7.33 - MySQL Community Server (GPL)
+-- SO del servidor: Win64
+-- HeidiSQL Versión: 11.2.0.6213
+-- ------------------------------------------------ --------
+
+/* !40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */ ;
+/* !40101 ESTABLECER NOMBRES utf8 */ ;
+/* !50503 ESTABLECER NOMBRES utf8mb4 */ ;
+/* !40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */ ;
+/* !40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */ ;
+/* !40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */ ;
+
+-- Volcando estructura para tabla vn_book.comentarios
+CREAR  TABLA  SI NO EXISTE ` comentarios` (
+  ` com_id `  int ( 11 ) NOT NULL AUTO_INCREMENT,
+  ` pub_id `  int ( 11 ) NO NULO ,
+  ` com_comentario `  varchar ( 50 ) NOT NULL ,
+  ` com_estado `  int ( 11 ) NO NULO ,
+  CLAVE PRINCIPAL ( ` com_id ` ),
+  CLAVE ` pub_id ` ( ` pub_id ` ),
+   RESTRICCIÓN `  FK_comentarios_publicaciones ` FOREIGN KEY ( ` pub_id ` ) REFERENCIAS  ` publicaciones ` ( ` pub_id ` )
+) MOTOR = InnoDB JUEGO DE CARACTERES POR DEFECTO = latin1;
+
+-- Volcando datos para la tabla vn_book.comentarios: ~0 filas (aproximadamente)
+/* !40000 ALTER TABLE `comentarios` DISABLE KEYS */ ;
+/* !40000 ALTER TABLE `comentarios` HABILITAR TECLAS */ ;
+
+-- Volcando estructura para tabla vn_book.publicaciones
+CREAR  TABLA  SI NO EXISTE ` publicaciones ` (
+  ` pub_id `  int ( 11 ) NOT NULL AUTO_INCREMENT,
+  ` pub_usuario `  varchar ( 250 ) NO NULO ,
+  ` pub_fecha `  fecha  NOT NULL ,
+  ` pub_hora `  tiempo  NO NULO ,
+  ` pub_descripcion `  varchar ( 250 ) NO NULO ,
+  ` pub_estado `  varchar ( 50 ) NO NULO ,
+  ` pub_imagen `  varchar ( 50 ) NO NULO ,
+  CLAVE PRIMARIA ( ` pub_id ` )
+) MOTOR = InnoDB AUTO_INCREMENT = 4 JUEGO DE CARACTERES POR DEFECTO = latin1;
+
+-- Volcando datos para la tabla vn_book.publicaciones: ~2 filas (aproximadamente)
+/* !40000 ALTER TABLE `publicaciones` DISABLE KEYS */ ;
+INSERTAR EN  ` publicaciones ` ( ` pub_id ` , ` pub_usuario ` , ` pub_fecha ` , ` pub_hora ` , ` pub_descripcion ` , ` pub_estado ` , ` pub_imagen ` ) VALORES
+	( 1 , ' ' , ' 2022-06-10 ' , ' 00:00:00 ' , ' APRENDIENDO BASE DE DATOS ' , ' ALEGRE ' , ' ' ),
+	( 2 , ' ' , ' 2022-06-17 ' , ' 00:00:00 ' , ' NO CORRE EL CÓDIGO ' , ' ENOJADO ' , ' ' ),
+	( 3 , ' Luis ' , ' 2022-06-20 ' , '13:42 : 23 ' , ' Comentario 1 ' , ' Alegre ' , ' ' );
+/* !40000 ALTER TABLE `publicaciones` HABILITAR TECLAS */ ;
+
+/* !40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */ ;
+/* !40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */ ;
+/* !40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */ ;
+/* !40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */ ;
